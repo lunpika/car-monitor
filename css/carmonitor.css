@@ -1,0 +1,23 @@
+.page{
+    position:absolute; 
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+.table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.table td{
+    padding:80px;
+    font-size:36px;
+    font-weight: bold;
+}
+#stream{
+    right: 0px;
+    top: 0px;
+}
+#main{
+    top:20px;
+}
+

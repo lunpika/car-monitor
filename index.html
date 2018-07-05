@@ -1,60 +1,52 @@
 <!DOCTYPE html>
-<html>
-	<script src="echarts.js"></script>
+<html lang="en">
+	<script src="js/echarts.js"></script>
+	<script src="js/jquery-3.3.1.js"></script>
 	<head>
 		<meta charset="utf-8" />
 		<title>监控项目</title>
-		<style type="text/css">
-		#page{
-			position:relative; 
-			height:600px;
-		}
-		#table{
-			position:static;
-			top:0px;
-			left:600px:
-			width:200px
-		}
-		.table{
-			width: 100%;
-			border-collapse: collapse;
-		}
-		.table td{
-			padding:80px;
-			font-size:36px;
-			font-weight: bold;
-		}
-		#stream{
-			position:static;
-			right: 0px;
-			top: 0px;
-		}
-		#main{
-			position:relative;
-			top:20px;
-		}
-		</style>
+        <link rel="stylesheet" type="text/css" href="css/carmonitor.css" />
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/component.css" />
+
+        <!--[if IE]>
+        <script src="js/html5.js"></script>
+        <![endif]-->
+
 	</head>
 	<body>
-		<div class="page">
-			<div class="stream">
-				<video width="320" height="240" controls="controls">
-					
-				</video>
+        <div class="container demo-1">
+			<div class="content">
+				<div id="large-header" class="large-header">
+                    <div class="page">
+                        <div id="stream">
+                            <video width="320" height="240" controls="controls">
+                                
+                            </video>
+                        </div>
+                        <div class="table">
+                            <table border="1" id="table" class="table">
+                                <tr>
+                                    <td>气体</td>
+                                    <td></td>
+                                <tr>
+                                    <td>温度</td>
+                                    <td></td>
+                                </tr>
+                            </table> 
+                        </div>
+                        <div id="main" style="width: 640px;height:480px;"></div>
+                    </div>
+                    <canvas id="demo-canvas"></canvas>
+				</div>
 			</div>
-			<div class="table">
-				<table border="1" id="table" class="table">
-					<tr>
-						<td>气体</td>
-						<td></td>
-					<tr>
-						<td>温度</td>
-						<td></td>
-					</tr>
-				</table> 
-			</div>
-		</div>
-			<div id="main" style="width: 640px;height:480px;"></div>
+		</div><!-- /container -->
+		<script src="js/TweenLite.min.js"></script>
+		<script src="js/EasePack.min.js"></script>
+		<script src="js/rAF.js"></script>
+		<script src="js/demo-1.js"></script>
+
 			<script type="text/javascript">
 				// 基于准备好的dom，初始化echarts实例
 				var myChart = echarts.init(document.getElementById('main'));
@@ -78,6 +70,8 @@
 						data: []
 					}]
 				};
+                myChart.setOption(option);
+
 				// 异步加载数据
 			$.get('data.json').done(function (data) {
 					// 填入数据
